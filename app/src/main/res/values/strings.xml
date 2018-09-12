@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Catalogue</string>
+    <string name="search">Search Movie</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="action_settings">Laguage Settings</string>
+    <string name="search_hint">Search Movie</string>
+    <string name="now_playing">NOW PLAYING</string>
+    <string name="upcomeing">UPCOMEING</string>
+    <string name="title_activity_base">Catalogue Movie</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Darmawan Zulkifli</string>
+    <string name="nav_header_subtitle">clouds.onmoon@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="appwidget_text">Movie Favorite</string>
+    <string name="add_widget">Add widget</string>
+    <string name="empety_text">Empety Movie Favorite</string>
+
+    <string name="notif_upcomeing">%1s Release, Here is new Movie, Check it !</string>
+    <string name="say_hello">"Hey, G'Morning ^-^, Please check the new movie ! "</string>
+    <string name="today_remainder">today_remainder</string>
+    <string name="release_reminder">release_reminder</string>
+    <string name="today_reminder">You will received daily reminder every 8 AM</string>
+    <string name="today_reminder_title">Today Remainder</string>
+    <string name="release_notif">You will received daily new movie release info every 7 AM</string>
+    <string name="new_release_title">New Movie Release</string>
+    <string name="language_change">languange</string>
+</resources>
+
+
