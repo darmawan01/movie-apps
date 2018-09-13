@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Notificatoins">
+    <PreferenceCategory android:title="@string/notif">
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="@string/today_remainder"
             android:summary="@string/today_reminder"
             android:title="@string/today_reminder_title"/>
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="@string/release_reminder"
             android:summary="@string/release_notif"
@@ -16,11 +16,11 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Language">
+    <PreferenceCategory android:title="@string/language">
 
         <Preference
-            android:summary="Choosen Language"
-            android:title="English"
+            android:summary="@string/choose_lang"
+            android:title="@string/language_selection"
             android:key="@string/language_change">
         </Preference>
 

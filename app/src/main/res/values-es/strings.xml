@@ -25,6 +25,10 @@
     <string name="today_reminder_title">Today Remainder</string>
     <string name="release_notif">You will received daily new movie release info every 7 AM</string>
     <string name="new_release_title">New Movie Release</string>
+    <string name="language_selection">English</string>
+    <string name="choose_lang">Choosen Language</string>
+    <string name="language">Language</string>
+    <string name="notif">Notification</string>
     <!--<string name="upcomeing_notif">Upcomeing Movie</string>-->
 
 </resources>

@@ -17,9 +17,13 @@
     <string name="empety_text">Movie Favorite Kosong</string>
     <string name="today_remainder">today_remainder</string>
     <string name="release_reminder">release_reminder</string>
-    <string name="today_reminder">You will received daily reminder every 8 AM</string>
-    <string name="today_reminder_title">Today Remainder</string>
-    <string name="release_notif">You will received daily new movie release info every 7 AM</string>
-    <string name="new_release_title">New Movie Release</string>
+    <string name="today_reminder">Anda Akan Menerima Notifikasi setiap jam 08:00 AM</string>
+    <string name="today_reminder_title">Notifikasi Hari Ini</string>
+    <string name="release_notif">Anda Akan Menerima Notifikasi Film terbaru setiap jam 07:00 AM</string>
+    <string name="new_release_title">Notifikasi Film baru</string>
+    <string name="language_selection">Indonesia</string>
+    <string name="choose_lang">Pilih Bahasa</string>
+    <string name="language">Bahasa</string>
+    <string name="notif">Pemberitahuan</string>
     <!--<string name="upcomeing_notif">Film Terbaru</string>-->
 </resources>

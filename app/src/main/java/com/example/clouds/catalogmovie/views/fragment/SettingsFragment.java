@@ -1,17 +1,18 @@
 package com.example.clouds.catalogmovie.views.fragment;
 
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.SwitchPreferenceCompat;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.clouds.catalogmovie.R;
 import com.example.clouds.catalogmovie.api.ApiBuilder;
@@ -33,27 +34,33 @@ import retrofit2.Response;
 public class SettingsFragment extends Fragment {
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsPrefernceFragment()).commit();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
-    public static class SettingsPrefernceFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener{
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        private SwitchPreference switchReminder;
-        private SwitchPreference switchToday;
+        getFragmentManager().beginTransaction().replace(R.id.settings_content, new SettingsPrefernceFragment()).commit();
+    }
+
+    public static class SettingsPrefernceFragment extends PreferenceFragmentCompat implements Preference.OnPreferenceChangeListener{
+
+        private SwitchPreferenceCompat switchReminder;
+        private SwitchPreferenceCompat switchToday;
         private MovieDailyNotif movieDailyNotif = new MovieDailyNotif();
         private MovieNowPlayingNotif movieNowPlayingNotif = new MovieNowPlayingNotif();
 
         @Override
-        public void onCreate(final Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+        public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.settings_fragment);
 
-
-            switchReminder = (SwitchPreference) findPreference(getString(R.string.today_remainder));
+            switchReminder = (SwitchPreferenceCompat) findPreference(getString(R.string.today_remainder));
             switchReminder.setOnPreferenceChangeListener(this);
-            switchToday = (SwitchPreference) findPreference(getString(R.string.release_notif));
+
+            switchToday = (SwitchPreferenceCompat) findPreference(getString(R.string.release_reminder));
             switchToday.setOnPreferenceChangeListener(this);
 
             Preference myPref = findPreference(getString(R.string.language_change));
@@ -63,7 +70,6 @@ public class SettingsFragment extends Fragment {
                     return true;
                 }
             });
-
         }
 
         @Override
