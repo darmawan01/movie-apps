@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.clouds.catalogmovie.R;
-import com.example.clouds.catalogmovie.views.fragment.OnPlayingClickFragment;
-import com.example.clouds.catalogmovie.views.fragment.UpComeingClickFragment;
+import com.example.clouds.catalogmovie.views.fragment.OnPlayingFragment;
+import com.example.clouds.catalogmovie.views.fragment.UpComeingFragment;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -23,9 +23,9 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new OnPlayingClickFragment();
+                return new OnPlayingFragment();
             case 1:
-                return new UpComeingClickFragment();
+                return new UpComeingFragment();
                 default:
                     return null;
         }

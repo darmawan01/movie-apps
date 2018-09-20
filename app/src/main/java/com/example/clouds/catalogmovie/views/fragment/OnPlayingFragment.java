@@ -31,21 +31,23 @@ import com.example.clouds.catalogmovie.views.interfaces.ClickInterface;
 
 import java.util.ArrayList;
 
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpComeingClickFragment extends Fragment implements ClickInterface {
+public class OnPlayingFragment extends Fragment implements ClickInterface {
 
     private RecyclerView recyclerView;
     private MovieAdapter movieAdapter;
     private ProgressBar progressBar;
     private ArrayList<Movie> movieList = new ArrayList<>();
+    private final String KEY = "MOVIE_LIST";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_up_comeing_movie, container, false);
+        return inflater.inflate(R.layout.fragment_on_playing_movie, container, false);
     }
 
     @Override
@@ -53,19 +55,31 @@ public class UpComeingClickFragment extends Fragment implements ClickInterface {
         super.onViewCreated(view, savedInstanceState);
 
         setHasOptionsMenu(true);
-        recyclerView = view.findViewById(R.id.rc_movie_up);
-        progressBar =  view.findViewById(R.id.progress_up);
+        recyclerView = view.findViewById(R.id.rc_movie);
+        progressBar =  view.findViewById(R.id.progress);
+
+        if (savedInstanceState != null){
+            restoreInstanceState(savedInstanceState);
+        }else{
+            loadData();
+        }
 
         movieAdapter = new MovieAdapter(movieList, getContext(), this);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerView.setAdapter(movieAdapter);
+        recyclerView.setItemAnimator(new SlideInLeftAnimator());
 
-        loadData();
+    }
+
+    private void restoreInstanceState(Bundle restoreState){
+        movieList = restoreState.getParcelableArrayList(KEY);
+        movieAdapter.notifyDataSetChanged();
+        Log.i("Restore", "Class :"+getClass().getSimpleName()+"/Data: "+movieList);
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
+
         inflater.inflate(R.menu.base, menu);
 
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.search));
@@ -86,6 +100,8 @@ public class UpComeingClickFragment extends Fragment implements ClickInterface {
                 return true;
             }
         });
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -101,7 +117,7 @@ public class UpComeingClickFragment extends Fragment implements ClickInterface {
     private void loadData(){
         progressBar.setVisibility(View.VISIBLE);
         ApiRepository api= ApiBuilder.getRetrofitIntance().create(ApiRepository.class);
-        Call<MovieResponse> call = api.getUpComMovie();
+        Call<MovieResponse> call = api.getOnPlayMovie();
         call.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
@@ -145,4 +161,9 @@ public class UpComeingClickFragment extends Fragment implements ClickInterface {
         startActivity(intent);
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putParcelableArrayList(KEY, movieList);
+        super.onSaveInstanceState(outState);
+    }
 }
